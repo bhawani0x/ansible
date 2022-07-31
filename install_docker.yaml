@@ -1,0 +1,24 @@
+--- 
+- 
+  hosts: all
+  name: "Install docker in slave machine"
+  become: true
+  tasks: 
+    - name: "install docker"
+      yum: 
+        name: docker
+        state: present
+    
+    - name: "install web server"
+      yum: 
+        name: httpd
+        state: present
+    
+    - name: "start web service"
+      command: systemctl start httpd
+
+    - name: "enable web server"
+      command: systemctl enable httpd
+    
+    - name: "chamnge home-page"
+      command: echo "<!DOCTYPE html> <html> <body> <h1>My First Heading</h1> <p>My first paragraph.</p> </body> </html>" > /var/www/html/index.html
