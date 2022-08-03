@@ -1,7 +1,5 @@
 --- 
 - hosts: all
   name: "Ping test on other machine"
-  tasks: 
-    - 
-      name: "ping test"
-      ping: ~
+  role:
+    - ping
